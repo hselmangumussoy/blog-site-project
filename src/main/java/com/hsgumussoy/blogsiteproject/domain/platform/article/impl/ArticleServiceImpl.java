@@ -36,8 +36,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void delete(String id) {
-        var  article = repository.findById(id).orElseThrow();
-        repository.delete(article);
+        /*var  article = repository.findById(id).orElseThrow();
+        repository.delete(article);*/
+        repository.findById(id);
     }
 
     @Override

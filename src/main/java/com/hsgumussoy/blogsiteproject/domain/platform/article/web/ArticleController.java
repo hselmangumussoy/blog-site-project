@@ -12,27 +12,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ArticleController {
     private final ArticleService service;
-    private final ArticleMapper articleMapper;
 
     @PostMapping
     private ArticleResponse save(@RequestBody ArticleRequest request){
-        return articleMapper.toResponse(service.save(articleMapper.toDto(request)));
+        return ArticleMapper.toResponse(service.save(ArticleMapper.toDto(request)));
+    }
+    @GetMapping("{/id}")
+    private ArticleResponse get(@PathVariable String id){
+        return ArticleMapper.toResponse(service.getById(id));
     }
     @GetMapping
-    private ArticleResponse get(@PathVariable String id){
-        return articleMapper.toResponse(service.getById(id));
-    }
-    @PostMapping
     private List<ArticleResponse> getAll(@RequestBody ArticleRequest request){
-        return articleMapper.toResponses(service.getAll(articleMapper.toDto(request)));
+        return ArticleMapper.toResponses(service.getAll(ArticleMapper.toDto(request)));
     }
-    @PostMapping
+    @DeleteMapping("{/id}")
     private void delete(@PathVariable String id){
         service.delete(id);
     }
-    @PostMapping
-    private ArticleResponse update(@PathVariable String id ,@RequestBody ArticleRequest request){
-        return articleMapper.toResponse(service.update(id , articleMapper.toDto(request)));
+    @PutMapping("{/id}")
+    private ArticleResponse update(@PathVariable String id , @RequestBody ArticleRequest request){
+        return ArticleMapper.toResponse(service.update(id , ArticleMapper.toDto(request)));
     }
 
 }
