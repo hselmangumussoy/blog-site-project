@@ -12,7 +12,7 @@ public class Article extends AbstractEntity {
     private String title;
     private String content;
 
-    private Long userId;
-    private Long categoryId;
+    private String userId;
+    private String categoryId;
 
 }
