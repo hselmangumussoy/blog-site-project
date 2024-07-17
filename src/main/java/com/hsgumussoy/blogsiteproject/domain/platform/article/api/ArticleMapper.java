@@ -4,14 +4,15 @@ import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleResponse;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
-import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Component
 public class ArticleMapper {
-    public ArticleResponse toResponse(ArticleDto dto) {
+    public ArticleMapper() {
+    }
+
+    public static ArticleResponse toResponse(ArticleDto dto) {
         return ArticleResponse.builder()
                 .title(dto.getTitle())
                 .content(dto.getContent())
@@ -23,7 +24,7 @@ public class ArticleMapper {
                 .build();
     }
 
-    public ArticleDto toDto(ArticleRequest request) {
+    public static ArticleDto toDto(ArticleRequest request) {
         return ArticleDto.builder()
                 .category(CategoryDto.builder().id((request.getCategoryId())).build())
                 .title(request.getTitle())
@@ -32,9 +33,14 @@ public class ArticleMapper {
                 .build();
     }
 
-    public List<ArticleResponse> toResponses(List<ArticleDto> articleDtoList) {
-        return articleDtoList.stream()
-                .map(this::toResponse)
-                .collect(Collectors.toList());
+    public static List<ArticleResponse> toResponses(List<ArticleDto> articleDtoList) {
+        List<ArticleResponse> list = new ArrayList<>();
+        for (ArticleDto articleDto : articleDtoList) {
+            ArticleResponse response = toResponse(articleDto);
+            list.add(response);
+        }
+        return list;
     }
+
+
 }

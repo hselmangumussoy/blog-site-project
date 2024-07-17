@@ -5,6 +5,9 @@ import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 
 public class ArticleMapper {
+    public ArticleMapper() {
+    }
+
     public static ArticleDto toDto(Article article, UserDto userDto, CategoryDto categoryDto) {
         return ArticleDto.builder()
                 .title(article.getTitle())
