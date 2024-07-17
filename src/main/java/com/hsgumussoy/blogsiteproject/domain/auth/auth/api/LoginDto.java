@@ -1,4 +1,4 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.auth.api;
 
-public class ExampleDto {
+public class LoginDto {
 }
