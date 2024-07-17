@@ -1,4 +1,4 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.user.web;
 
-public class ExampleResponse {
+public class UserResponse {
 }

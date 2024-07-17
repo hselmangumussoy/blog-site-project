@@ -1,4 +1,4 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.user.impl;
 
-public interface ExampleRepository {
+public class UserServiceImpl {
 }

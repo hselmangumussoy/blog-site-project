@@ -1,4 +1,4 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.user.api;
 
-public class ExampleMapper {
+public class UserDto {
 }

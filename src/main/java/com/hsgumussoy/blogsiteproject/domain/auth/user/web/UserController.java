@@ -1,4 +1,4 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.user.web;
 
-public class ExampleController {
+public class UserController {
 }
