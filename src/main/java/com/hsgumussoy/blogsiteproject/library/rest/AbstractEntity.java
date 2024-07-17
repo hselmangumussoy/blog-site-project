@@ -16,7 +16,7 @@ public abstract class AbstractEntity {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Long id;
+    private String id;
 
     @CreatedDate//: Bu alan entity ilk oluşturulduğunda otomatik olarak ayarlanır.
     private Date created;
