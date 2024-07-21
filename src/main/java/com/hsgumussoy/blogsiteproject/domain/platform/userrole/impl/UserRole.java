@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class UserRole  extends AbstractEntity {
-    private Long userId;
-    private Long roleId;
+    private String userId;
+    private String roleId;
 }
