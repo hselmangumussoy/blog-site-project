@@ -29,7 +29,7 @@ public class ArticleMapper {
 
     public static ArticleDto toDto(ArticleRequest request) {
         return ArticleDto.builder()
-                .category(CategoryDto.builder().id((request.getCategoryId())).build())
+                .category(CategoryDto.builder().id(request.getCategoryId()).build())
                 .title(request.getTitle())
                 .content(request.getContent())
                 .user(UserDto.builder().id(request.getUserId()).build())

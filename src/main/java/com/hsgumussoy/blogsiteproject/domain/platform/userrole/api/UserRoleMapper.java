@@ -1,5 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.userrole.api;
 
+import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
+import com.hsgumussoy.blogsiteproject.domain.platform.role.api.RoleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.userrole.web.UserRoleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.userrole.web.UserRoleResponse;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
@@ -8,15 +10,15 @@ import org.springframework.data.domain.Page;
 public class UserRoleMapper {
     public static UserRoleDto toDto(UserRoleRequest request) {
         return UserRoleDto.builder()
-                .userId(request.getUserId())
-                .roleId(request.getRoleId())
+                .user(UserDto.builder().id(request.getUserId()).build())
+                .role(RoleDto.builder().id(request.getRoleId()).build())
                 .build();
     }
 
     public static UserRoleResponse toResponse(UserRoleDto dto) {
         return UserRoleResponse.builder()
-                .userId(dto.getUserId())
-                .roleId(dto.getRoleId())
+                .user(dto.getUser())
+                .role(dto.getRole())
                 .created(dto.getCreated())
                 .id(dto.getId())
                 .modified(dto.getModified())
