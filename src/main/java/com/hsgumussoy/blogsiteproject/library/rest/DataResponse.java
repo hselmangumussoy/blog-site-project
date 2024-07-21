@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DataResponse <T>{
-    // Bir liste yanıtını sarmalar.
+public class DataResponse<T> {
     private List<T> items = List.of();
-
 
 }
