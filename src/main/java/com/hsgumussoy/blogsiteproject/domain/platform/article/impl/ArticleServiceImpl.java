@@ -7,10 +7,10 @@ import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.awt.print.Pageable;
 
 @RequiredArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
@@ -47,15 +47,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleDto> getAll(ArticleDto dto) {
-        List<Article> articles = repository.findAll();
-
-        return articles.stream()
-                .map(article -> {
-                    UserDto userDto = userService.getById(article.getUserId());
-                    CategoryDto categoryDto = categoryService.getById(article.getCategoryId());
-                    return ArticleMapper.toDto(article, userDto, categoryDto);
-                    })
-                .collect(Collectors.toList());
+    public Page<ArticleDto> getAll(Pageable pageable) {
+        return PageToDto(repository.findAll(pageable));
     }
 }

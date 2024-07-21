@@ -4,10 +4,12 @@ import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleMapper;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService;
 import com.hsgumussoy.blogsiteproject.library.rest.BaseController;
 import com.hsgumussoy.blogsiteproject.library.rest.MetaResponse;
+import com.hsgumussoy.blogsiteproject.library.rest.PageResponse;
 import com.hsgumussoy.blogsiteproject.library.rest.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -26,8 +28,8 @@ public class ArticleController extends BaseController {
         return respond(ArticleMapper.toResponse(service.getById(id)));
     }
     @GetMapping
-    private List<ArticleResponse> getAll(@RequestBody ArticleRequest request){
-        return ArticleMapper.toResponses(service.getAll(ArticleMapper.toDto(request)));
+    private Response<PageResponse<ArticleResponse>> getAll(Pageable pageable){
+        return respond(ArticleMapper.toPageResponse(service.getAll(pageable)));
     }
     @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){

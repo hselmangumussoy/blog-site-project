@@ -1,7 +1,9 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.api;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Service
@@ -14,5 +16,5 @@ public interface ArticleService {
 
     ArticleDto update(String id, ArticleDto dto);
 
-    List<ArticleDto> getAll(ArticleDto dto);
+    Page<ArticleDto> getAll(Pageable pageable);
 }
