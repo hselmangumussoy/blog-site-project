@@ -1,4 +1,6 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.role.impl;
 
-public interface RoleRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoleRepository extends JpaRepository<Role, String> {
 }

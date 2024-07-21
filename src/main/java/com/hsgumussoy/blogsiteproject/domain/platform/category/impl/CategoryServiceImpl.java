@@ -37,8 +37,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryDto> getByIds(List<String> categoryIds) {
-        return null;
+    public List<CategoryDto> getByIds(List<String> ids) {
+        return repository.findAllById(ids).stream().map(CategoryMapper::toDto).toList();
     }
 
 }

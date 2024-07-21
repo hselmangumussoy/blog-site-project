@@ -9,5 +9,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Role extends AbstractEntity {
-    private  Long name;
+    private RoleName name;
+
 }
