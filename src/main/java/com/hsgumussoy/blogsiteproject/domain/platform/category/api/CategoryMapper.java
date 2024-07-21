@@ -2,9 +2,9 @@ package com.hsgumussoy.blogsiteproject.domain.platform.category.api;
 
 import com.hsgumussoy.blogsiteproject.domain.platform.category.web.CategoryRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.web.CategoryResponse;
+import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
+import org.springframework.data.domain.Page;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryMapper {
     public CategoryMapper() {
@@ -23,13 +23,8 @@ public class CategoryMapper {
                 .build();
     }
 
-    public static List<CategoryResponse> toResponses(List<CategoryDto> categoryDtoList) {
-        List<CategoryResponse> list = new ArrayList<>();
-        for (CategoryDto categoryDto : categoryDtoList) {
-            CategoryResponse response = toResponse(categoryDto);
-            list.add(response);
-        }
-        return list;
-    }
 
+    public static Page<CategoryResponse> toPageResponse(Page<CategoryDto> dtos) {
+        return PageUtil.pageToDto(dtos, CategoryMapper::toResponse);
+    }
 }
