@@ -15,4 +15,6 @@ public interface CategoryService {
     List<CategoryDto> getAll();
 
     CategoryDto update(String id, CategoryDto dto);
+
+    List<CategoryDto> getByIds(List<String> categoryIds);
 }
