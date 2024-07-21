@@ -8,7 +8,7 @@ public class BaseController {
     public <T> Response<DataResponse<T>> respond(List<T> items) {
         return ResponseBuilder.build(items);
     }
-    public <T> Response<PageResponse<T>> repond(Page<T> items){
+    public <T> Response<PageResponse<T>> respond(Page<T> items){
         return ResponseBuilder.build(items);
     }
 
