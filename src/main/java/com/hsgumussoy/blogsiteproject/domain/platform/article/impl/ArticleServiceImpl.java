@@ -40,7 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
     public void delete(String id) {
         /*var  article = repository.findById(id).orElseThrow();
         repository.delete(article);*/
-        repository.findById(id);
+        repository.deleteById(id);
     }
 
     @Override
