@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public interface ArticleService {
@@ -16,4 +18,6 @@ public interface ArticleService {
     ArticleDto update(String id, ArticleDto dto);
 
     Page<ArticleDto> getAll(Pageable pageable);
+
+    List<ArticleDto> getByIds(List<String> articleIds);
 }

@@ -4,12 +4,8 @@ import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleResponse;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
-import com.hsgumussoy.blogsiteproject.library.rest.MetaResponse;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import org.springframework.data.domain.Page;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ArticleMapper {
     private ArticleMapper() {
@@ -35,16 +31,6 @@ public class ArticleMapper {
                 .user(UserDto.builder().id(request.getUserId()).build())
                 .build();
     }
-
-    public static List<ArticleResponse> toResponses(List<ArticleDto> articleDtoList) {
-        List<ArticleResponse> list = new ArrayList<>();
-        for (ArticleDto articleDto : articleDtoList) {
-            ArticleResponse response = toResponse(articleDto);
-            list.add(response);
-        }
-        return list;
-    }
-
 
     public static Page<ArticleResponse> toPageResponse(Page<ArticleDto> articleDtos) {
         return PageUtil.pageToDto(articleDtos, ArticleMapper::toResponse);

@@ -1,6 +1,5 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.role.api;
 
-import com.hsgumussoy.blogsiteproject.domain.platform.role.impl.RoleName;
 import com.hsgumussoy.blogsiteproject.domain.platform.role.web.RoleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.role.web.RoleResponse;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;

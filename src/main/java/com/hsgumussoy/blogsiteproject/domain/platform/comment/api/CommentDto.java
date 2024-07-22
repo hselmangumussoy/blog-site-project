@@ -1,19 +1,15 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.comment.web;
+package com.hsgumussoy.blogsiteproject.domain.platform.comment.api;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
-
+@RequiredArgsConstructor
 @Builder
 @Setter
 @Getter
-@RequiredArgsConstructor
-public class CommentResponse {
+public class CommentDto {
     private final String id;
     private final Date modified;
     private final Date created;

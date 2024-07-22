@@ -52,6 +52,12 @@ public class ArticleServiceImpl implements ArticleService {
     public Page<ArticleDto> getAll(Pageable pageable) {
         return PageToDto(repository.findAll(pageable));
     }
+
+    @Override
+    public List<ArticleDto> getByIds(List<String> articleIds) {
+        return null;
+    }
+
     public Page<ArticleDto> PageToDto(Page<Article> articles){
         List<String> categoryIds = articles.stream().map(Article::getCategoryId).toList();
         List<String> userIds = articles.stream().map(Article::getUserId).toList();
