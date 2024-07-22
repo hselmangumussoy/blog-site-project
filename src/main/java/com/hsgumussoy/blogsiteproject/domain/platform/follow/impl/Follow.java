@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Follow extends AbstractEntity {
-    private Long followerId; //relation to user
-    private Long followedId; //relation to user
+    private String followerId; //relation to user
+    private String followedId; //relation to user
+    private int count;
 }
