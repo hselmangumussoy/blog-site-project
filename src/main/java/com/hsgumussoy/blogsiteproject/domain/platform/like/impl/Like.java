@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Like extends AbstractEntity {
-    private Long userId;
-    private Long articleId;
+    private String userId;
+    private String articleId;
+    private int count;
 }
