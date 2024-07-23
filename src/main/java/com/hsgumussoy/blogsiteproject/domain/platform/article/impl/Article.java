@@ -11,6 +11,7 @@ import lombok.Setter;
 public class Article extends AbstractEntity {
     private String title;
     private String content;
+    private int likeCount;
 
     private String userId;
     private String categoryId;

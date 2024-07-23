@@ -18,6 +18,7 @@ public class ArticleMapper {
                 .modified(dto.getModified())
                 .created(dto.getCreated())
                 .id(dto.getId())
+                .likeCount(dto.getLikeCount())
                 .category(dto.getCategory())
                 .user(dto.getUser())
                 .build();

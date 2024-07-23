@@ -15,6 +15,7 @@ public class ArticleMapper {
                 .id(article.getId())
                 .modified(article.getModified())
                 .created(article.getCreated())
+                .likeCount(article.getLikeCount())
                 .user(userDto)
                 .category(categoryDto)
                 .build();
@@ -25,6 +26,7 @@ public class ArticleMapper {
         article.setUserId(dto.getUser().getId());
         article.setTitle(dto.getTitle());
         article.setContent(dto.getContent());
+        article.setLikeCount(dto.getLikeCount());
         return article;
     }
 }
