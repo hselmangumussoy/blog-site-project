@@ -13,6 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PermissionRole extends AbstractEntity {
+    /*İzin ile rol arasındaki ilişkiyi tanımlar.
+    * Bir rol, bir veya daha fazla izne sahip olabilir
+    * ve bir izin birden fazla rolde bulunabilir.*/
+
     private String permissionId;
     private String roleId;
 

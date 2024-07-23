@@ -14,6 +14,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Permission extends AbstractEntity {
+    /*Sistemdeki belirli işlemleri gerçekleştirmek
+    için gerekli izinleri tanımlar. İzinler, genellikle
+    rol ve kullanıcı yetkilendirmeleriyle ilişkilidir.*/
+
     private String name;
     private String description;
     private PermissionType permissionType;

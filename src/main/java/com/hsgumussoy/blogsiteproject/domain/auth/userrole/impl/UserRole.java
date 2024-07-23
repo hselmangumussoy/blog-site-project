@@ -13,6 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRole  extends AbstractEntity {
+    /*Kullanıcı ile rol arasındaki ilişkiyi tanımlar.
+    Bir kullanıcı birden fazla rol alabilir ve bir
+    rol birden fazla kullanıcıya atanabilir.*/
+
     private String userId;
     private String roleId;
     private Boolean status;

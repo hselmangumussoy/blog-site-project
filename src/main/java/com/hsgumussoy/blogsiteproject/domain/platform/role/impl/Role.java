@@ -13,6 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role extends AbstractEntity {
+    /*Kullanıcıların sisteme erişim ve yetkilerini tanımlar.
+    * Roller, belirli bir dizi izni içerir ve bu izinler
+    * kullanıcının sistemdeki yetkilerini belirler.*/
+
     private String name;
 
 }
