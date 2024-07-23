@@ -1,11 +1,11 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.userrole.impl;
+package com.hsgumussoy.blogsiteproject.domain.auth.userrole.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserService;
+import com.hsgumussoy.blogsiteproject.domain.auth.userrole.api.UserRoleDto;
+import com.hsgumussoy.blogsiteproject.domain.auth.userrole.api.UserRoleService;
 import com.hsgumussoy.blogsiteproject.domain.platform.role.api.RoleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.role.api.RoleService;
-import com.hsgumussoy.blogsiteproject.domain.platform.userrole.api.UserRoleDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.userrole.api.UserRoleService;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

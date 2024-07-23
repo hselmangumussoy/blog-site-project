@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.userrole.web;
+package com.hsgumussoy.blogsiteproject.domain.auth.userrole.web;
 
 import lombok.*;
 

@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.userrole.api;
+package com.hsgumussoy.blogsiteproject.domain.auth.userrole.api;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

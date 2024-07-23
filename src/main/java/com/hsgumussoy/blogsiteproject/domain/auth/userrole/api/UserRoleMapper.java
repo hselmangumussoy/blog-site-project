@@ -1,9 +1,9 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.userrole.api;
+package com.hsgumussoy.blogsiteproject.domain.auth.userrole.api;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
+import com.hsgumussoy.blogsiteproject.domain.auth.userrole.web.UserRoleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.role.api.RoleDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.userrole.web.UserRoleRequest;
-import com.hsgumussoy.blogsiteproject.domain.platform.userrole.web.UserRoleResponse;
+import com.hsgumussoy.blogsiteproject.domain.auth.userrole.web.UserRoleResponse;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import org.springframework.data.domain.Page;
 

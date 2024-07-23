@@ -1,8 +1,8 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.userrole.impl;
+package com.hsgumussoy.blogsiteproject.domain.auth.userrole.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
+import com.hsgumussoy.blogsiteproject.domain.auth.userrole.api.UserRoleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.role.api.RoleDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.userrole.api.UserRoleDto;
 
 public class UserRoleMapper {
     public static UserRole toEntity(UserRole userRole, UserRoleDto dto) {

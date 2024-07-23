@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.userrole.impl;
+package com.hsgumussoy.blogsiteproject.domain.auth.userrole.impl;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

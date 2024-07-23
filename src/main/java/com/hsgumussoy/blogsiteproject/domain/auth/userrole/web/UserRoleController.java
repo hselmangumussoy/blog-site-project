@@ -1,7 +1,7 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.userrole.web;
+package com.hsgumussoy.blogsiteproject.domain.auth.userrole.web;
 
-import com.hsgumussoy.blogsiteproject.domain.platform.userrole.api.UserRoleMapper;
-import com.hsgumussoy.blogsiteproject.domain.platform.userrole.api.UserRoleService;
+import com.hsgumussoy.blogsiteproject.domain.auth.userrole.api.UserRoleMapper;
+import com.hsgumussoy.blogsiteproject.domain.auth.userrole.api.UserRoleService;
 import com.hsgumussoy.blogsiteproject.library.rest.BaseController;
 import com.hsgumussoy.blogsiteproject.library.rest.MetaResponse;
 import com.hsgumussoy.blogsiteproject.library.rest.PageResponse;
