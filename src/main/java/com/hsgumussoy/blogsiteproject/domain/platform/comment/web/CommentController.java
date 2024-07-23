@@ -23,7 +23,7 @@ public class CommentController extends BaseController {
     private Response<CommentResponse> save(@RequestBody CommentRequest request){
         return respond(CommentMapper.toResponse(service.save(CommentMapper.toDto(request))));
     }
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     private Response<CommentResponse> get(@PathVariable String id){
         return respond(CommentMapper.toResponse(service.getById(id)));
     }
@@ -31,7 +31,7 @@ public class CommentController extends BaseController {
     private Response<PageResponse<CommentResponse>> getAll(Pageable pageable){
         return respond(CommentMapper.toPageResponse(service.getAll(pageable)));
     }
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());

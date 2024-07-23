@@ -20,7 +20,7 @@ public class UserController extends BaseController {
     private Response<UserResponse> save(@RequestBody UserRequest request){
         return respond(UserMapper.toResponse(service.save(UserMapper.toDto(request))));
     }
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     private Response<UserResponse> get(@PathVariable String id){
         return respond(UserMapper.toResponse(service.getById(id)));
     }
@@ -28,12 +28,12 @@ public class UserController extends BaseController {
     private Response<PageResponse<UserResponse>> getAll(Pageable pageable){
         return respond(UserMapper.toPageResponse(service.getAll(pageable)));
     }
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());
     }
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     private Response<UserResponse> update(@PathVariable String id , @RequestBody UserRequest request){
         return respond(UserMapper.toResponse(service.update(id , UserMapper.toDto(request))));
     }

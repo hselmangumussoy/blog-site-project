@@ -10,10 +10,12 @@ import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @RequiredArgsConstructor
+@Service
 public class UserRoleServiceImpl implements UserRoleService {
     private final UserRoleRepository repository;
     private final UserService userService;

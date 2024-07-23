@@ -4,17 +4,18 @@ import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserService;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService;
-import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.comment.api.CommentDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.comment.api.CommentService;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @RequiredArgsConstructor
+@Service
 public class CommentServiceImpl implements CommentService {
     private final CommentRepository repository;
     private final UserService userService;

@@ -26,7 +26,7 @@ public class CategoryController extends BaseController {
     private Response<CategoryResponse> save(@RequestBody CategoryRequest request){
         return respond(CategoryMapper.toResponse(service.save(CategoryMapper.toDto(request))));
     }
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     private Response<CategoryResponse> get(@PathVariable String id){
         return respond(CategoryMapper.toResponse(service.getById(id)));
     }
@@ -34,12 +34,12 @@ public class CategoryController extends BaseController {
     private Response<PageResponse<CategoryResponse>> getAll(Pageable pageable){
         return respond(CategoryMapper.toPageResponse(service.getAll(pageable)));
     }
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());
     }
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     private Response<CategoryResponse> update(@PathVariable String id , @RequestBody CategoryRequest request){
         return respond(CategoryMapper.toResponse(service.update(id , CategoryMapper.toDto(request))));
     }

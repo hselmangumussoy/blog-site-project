@@ -24,7 +24,7 @@ public class RoleController extends BaseController {
         return respond(RoleMapper.toResponse(service.save(RoleMapper.toDto(request))));
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     private Response<RoleResponse> get(@PathVariable String id){
         return respond(RoleMapper.toResponse(service.getById(id)));
     }
@@ -37,7 +37,7 @@ public class RoleController extends BaseController {
         service.delete(id);
         return new Response<>(MetaResponse.success());
     }
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     private Response<RoleResponse> update(@PathVariable String id , @RequestBody RoleRequest request){
         return respond(RoleMapper.toResponse(service.update(id , RoleMapper.toDto(request))));
     }

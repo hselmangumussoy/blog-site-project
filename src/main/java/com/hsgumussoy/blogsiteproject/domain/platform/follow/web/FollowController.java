@@ -19,7 +19,7 @@ public class FollowController extends BaseController {
     private Response<FollowResponse> save(@RequestBody FollowRequest request){
         return respond(FollowMapper.toResponse(service.save(FollowMapper.toDto(request))));
     }
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     private Response<FollowResponse> get(@PathVariable String id){
         return respond(FollowMapper.toResponse(service.getById(id)));
     }
@@ -27,7 +27,7 @@ public class FollowController extends BaseController {
     private Response<PageResponse<FollowResponse>> getAll(Pageable pageable){
         return respond(FollowMapper.toPageResponse(service.getAll(pageable)));
     }
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());

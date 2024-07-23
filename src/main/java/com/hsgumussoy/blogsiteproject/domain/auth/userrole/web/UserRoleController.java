@@ -20,12 +20,12 @@ public class UserRoleController extends BaseController {
         return respond(UserRoleMapper.toResponse(service.save(UserRoleMapper.toDto(request))));
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     private Response<UserRoleResponse> get(@PathVariable String id){
         return respond(UserRoleMapper.toResponse(service.getById(id)));
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());

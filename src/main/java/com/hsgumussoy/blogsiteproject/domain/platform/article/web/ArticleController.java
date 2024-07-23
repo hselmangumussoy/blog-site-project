@@ -22,8 +22,8 @@ public class ArticleController extends BaseController {
         return respond(ArticleMapper.toResponse(service.save(ArticleMapper.toDto(request))));
     }
 
-    @GetMapping("{/id}")
-    private Response<ArticleResponse> get(@PathVariable String id){
+    @GetMapping("/{id}")
+    private Response<ArticleResponse> get(@PathVariable("id") String id){
         return respond(ArticleMapper.toResponse(service.getById(id)));
     }
     @GetMapping
@@ -31,12 +31,12 @@ public class ArticleController extends BaseController {
         return respond(ArticleMapper.toPageResponse(service.getAll(pageable)));
     }
     @DeleteMapping("/{id}")
-    private Response<Void> delete(@PathVariable String id){
+    private Response<Void> delete(@PathVariable("id") String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());
     }
-    @PutMapping("{/id}")
-    private Response<ArticleResponse> update(@PathVariable String id , @RequestBody ArticleRequest request){
+    @PutMapping("/{id}")
+    private Response<ArticleResponse> update(@PathVariable("id") String id , @RequestBody ArticleRequest request){
         return respond(ArticleMapper.toResponse(service.update(id , ArticleMapper.toDto(request))));
     }
 

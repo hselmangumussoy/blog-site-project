@@ -2,9 +2,6 @@ package com.hsgumussoy.blogsiteproject.domain.auth.userrole.api;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
-@Service
 public interface UserRoleService {
     UserRoleDto save(UserRoleDto dto);
 
