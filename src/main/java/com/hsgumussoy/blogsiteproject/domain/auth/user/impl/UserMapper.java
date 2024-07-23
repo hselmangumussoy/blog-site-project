@@ -8,6 +8,8 @@ public class UserMapper {
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
         user.setPhoneNumber(dto.getPhoneNumber());
+        user.setUserType(dto.getUserType());
+        user.setActive(dto.getActive());
         return user;
     }
 
@@ -18,6 +20,8 @@ public class UserMapper {
                 .userName(user.getUserName())
                 .password(user.getPassword())
                 .phoneNumber(user.getPhoneNumber())
+                .userType(user.getUserType())
+                .active(user.getActive())
                 .created(user.getCreated())
                 .modified(user.getModified())
                 .build();
