@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.auth.auth.api;
+package com.hsgumussoy.blogsiteproject.domain.auth.auth.web;
 
 import lombok.*;
 
@@ -7,6 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TokenDto {
+public class TokenResponse {
     private String token;
 }
