@@ -10,6 +10,5 @@ import lombok.Setter;
 @Entity
 public class Follow extends AbstractEntity {
     private String followerId; //relation to user
-    private String followedId; //relation to user
-    private int count;
+    private String userId; //relation to user
 }

@@ -4,12 +4,11 @@ import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.follow.api.FollowDto;
 
 public class FollowMapper {
-    public static FollowDto toDto(Follow follow, UserDto followerDto, UserDto followedDto) {
+    public static FollowDto toDto(Follow follow, UserDto followerDto, UserDto user) {
         return FollowDto.builder()
                 .follower(followerDto)
-                .followed(followedDto)
+                .user(user)
                 .id(follow.getId())
-                .count(follow.getCount())
                 .created(follow.getCreated())
                 .modified(follow.getModified())
                 .build();
@@ -17,9 +16,8 @@ public class FollowMapper {
 
     public static Follow toEntity(Follow follow, FollowDto dto) {
         follow.setFollowerId(dto.getFollower().getId());
-        follow.setFollowedId(dto.getFollowed().getId());
+        follow.setUserId(dto.getUser().getId());
         follow.setId(dto.getId());
-        follow.setCount(dto.getCount());
         follow.setCreated(dto.getCreated());
         follow.setModified(dto.getModified());
 

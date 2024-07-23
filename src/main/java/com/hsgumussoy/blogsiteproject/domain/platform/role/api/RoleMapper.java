@@ -17,7 +17,7 @@ public class RoleMapper {
 
     public static RoleDto toDto(RoleRequest request) {
         return RoleDto.builder().build();
-                //.name(RoleName.ROLE_USER).build();
+                //.name(request.ROLE_USER).build();
     }
 
     public static Page<RoleResponse> toPageResponse(Page<RoleDto> roleDtos) {

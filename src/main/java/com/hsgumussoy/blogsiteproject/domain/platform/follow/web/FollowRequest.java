@@ -9,5 +9,5 @@ import lombok.*;
 @Builder
 public class FollowRequest {
     private String followerId;
-    private String followedId;
+    private String userId;
 }

@@ -18,7 +18,7 @@ public class FollowResponse {
     private final Date created;
     private final Date modified;
     private final UserDto follower;
-    private final UserDto followed;
+    private final UserDto user;
     private final int count;
 
 }

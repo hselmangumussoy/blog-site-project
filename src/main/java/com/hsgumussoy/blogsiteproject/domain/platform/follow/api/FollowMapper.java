@@ -11,14 +11,14 @@ public class FollowMapper {
 
     public static FollowDto toDto(FollowRequest request) {
         return FollowDto.builder()
-                .followed(UserDto.builder().id(request.getFollowedId()).build())
+                .user(UserDto.builder().id(request.getUserId()).build())
                 .follower(UserDto.builder().id(request.getFollowerId()).build())
                 .build();
     }
 
     public static FollowResponse toResponse(FollowDto dto) {
         return FollowResponse.builder()
-                .followed(dto.getFollowed())
+                .user(dto.getUser())
                 .follower(dto.getFollower())
                 .count(dto.getCount())
                 .created(dto.getCreated())
