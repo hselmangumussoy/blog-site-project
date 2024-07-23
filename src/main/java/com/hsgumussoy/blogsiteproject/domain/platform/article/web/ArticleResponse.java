@@ -18,6 +18,7 @@ public class ArticleResponse {
     private final String content;
     private final Date created;
     private final Date modified;
+    private final int likeCount;
 
     private final UserDto user;
     private final CategoryDto category;
