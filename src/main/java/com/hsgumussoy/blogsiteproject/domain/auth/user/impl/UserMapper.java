@@ -24,6 +24,7 @@ public class UserMapper {
                 .active(user.getActive())
                 .created(user.getCreated())
                 .modified(user.getModified())
+                .active(user.getActive())
                 .build();
     }
 }

@@ -14,6 +14,8 @@ public class CategoryMapper {
         return CategoryResponse.builder()
                 .id(dto.getId())
                 .name(dto.getName())
+                .created(dto.getCreated())
+                .modified(dto.getModified())
                 .build();
     }
 

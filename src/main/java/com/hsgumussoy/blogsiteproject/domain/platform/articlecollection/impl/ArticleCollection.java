@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ArticleCollection extends AbstractEntity {
-    private  Long readingListId;
+    private  Long collection;
     private Long articleId;
 }
