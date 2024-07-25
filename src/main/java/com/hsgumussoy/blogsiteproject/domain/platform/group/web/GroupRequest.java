@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.role.web;
+package com.hsgumussoy.blogsiteproject.domain.platform.group.web;
 
 import lombok.*;
 
@@ -7,6 +7,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RoleRequest {
+public class GroupRequest {
     private String name;
 }

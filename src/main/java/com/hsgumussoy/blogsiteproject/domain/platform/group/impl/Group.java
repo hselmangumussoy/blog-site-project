@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.role.impl;
+package com.hsgumussoy.blogsiteproject.domain.platform.group.impl;
 
 import com.hsgumussoy.blogsiteproject.library.rest.AbstractEntity;
 import jakarta.persistence.Entity;
@@ -12,11 +12,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role extends AbstractEntity {
-    /*Kullanıcıların sisteme erişim ve yetkilerini tanımlar.
-    * Roller, belirli bir dizi izni içerir ve bu izinler
-    * kullanıcının sistemdeki yetkilerini belirler.*/
-
+public class Group extends AbstractEntity {
     private String name;
 
 }

@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.role.web;
+package com.hsgumussoy.blogsiteproject.domain.platform.group.api;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,11 +7,11 @@ import lombok.Setter;
 
 import java.util.Date;
 
+@RequiredArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Builder
-public class RoleResponse {
+public class GroupDto {
     private final String id;
     private final String name;
     private final Date modified;

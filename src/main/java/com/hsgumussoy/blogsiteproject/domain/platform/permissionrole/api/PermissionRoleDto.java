@@ -1,7 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.permissionrole.api;
 
 import com.hsgumussoy.blogsiteproject.domain.platform.permission.api.PermissionDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.role.api.RoleDto;
+import com.hsgumussoy.blogsiteproject.domain.platform.group.api.GroupDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -16,5 +16,5 @@ public class PermissionRoleDto {private final String id;
     private final Date created;
     private final Date modified;
     private final PermissionDto permission;
-    private final RoleDto role;
+    private final GroupDto role;
 }

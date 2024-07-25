@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.auth.userrole.web;
+package com.hsgumussoy.blogsiteproject.domain.auth.usergroup.web;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserRoleRequest {
+public class UserGroupRequest {
     private String userId;
     private String roleId;
 }
