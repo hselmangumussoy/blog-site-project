@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.articletag.impl;
+package com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag;
 
 import com.hsgumussoy.blogsiteproject.library.rest.AbstractEntity;
 import jakarta.persistence.Entity;
