@@ -1,6 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.user.api;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserType;
+import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -22,4 +23,5 @@ public class UserDto {
     private final String phoneNumber;
     private final UserType userType;
     private final Boolean active;
+    private final CollectionDto collection;
 }

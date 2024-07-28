@@ -11,5 +11,4 @@ import lombok.Setter;
 public class Collection extends AbstractEntity {
     private String name;
 
-    private String userId;
 }

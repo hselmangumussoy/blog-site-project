@@ -2,6 +2,7 @@ package com.hsgumussoy.blogsiteproject.domain.auth.user.api;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.web.UserRequest;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.web.UserResponse;
+import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import org.springframework.data.domain.Page;
 
@@ -18,6 +19,7 @@ public class UserMapper {
                 .email(request.getEmail())
                 .userName(request.getUserName())
                 .userType(request.getUserType())
+                .collection(CollectionDto.builder().id(request.getCollectionId()).build())
                 .build();
 
     }
@@ -33,6 +35,7 @@ public class UserMapper {
                 .password(dto.getPassword())
                 .userType(dto.getUserType())
                 .active(dto.getActive())
+                .collection(dto.getCollection())
                 .build();
     }
 

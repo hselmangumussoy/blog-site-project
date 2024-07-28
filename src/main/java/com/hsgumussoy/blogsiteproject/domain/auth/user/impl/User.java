@@ -21,6 +21,7 @@ public class User extends AbstractEntity {
 
     private UserType userType;
     private Boolean active;
+    private String collectionId;
 
 
 }

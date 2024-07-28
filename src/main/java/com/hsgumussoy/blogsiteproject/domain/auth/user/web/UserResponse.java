@@ -1,6 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.user.web;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserType;
+import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
 import lombok.*;
 
 import java.util.Date;
@@ -19,5 +20,5 @@ public class UserResponse {
     private final String phoneNumber;
     private final UserType userType;
     private final Boolean active;
-
+    private final CollectionDto collection;
 }

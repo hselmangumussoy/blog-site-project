@@ -1,6 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.collection.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
+import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserMapper;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserServiceImpl;
 import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionService;
@@ -16,18 +17,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CollectionServiceImpl implements CollectionService {
     private final CollectionRepository repository;
-    private final UserServiceImpl userService;
+
     @Override
     public CollectionDto save(CollectionDto dto) {
-        UserDto userDto = userService.getById(dto.getUser().getId());
-        return CollectionMapper.toDto(repository.save(CollectionMapper.toEntity(new Collection(), dto)), userDto);
+        return CollectionMapper.toDto(repository.save(CollectionMapper.toEntity(new Collection(), dto)));
     }
 
     @Override
     public CollectionDto getById(String id) {
-        Collection collection = repository.findById(id).get();
-        UserDto userDto = userService.getById(collection.getUserId());
-        return CollectionMapper.toDto(collection, userDto);
+        return CollectionMapper.toDto(repository.findById(id).get());
     }
 
     @Override
@@ -42,17 +40,11 @@ public class CollectionServiceImpl implements CollectionService {
 
     @Override
     public Page<CollectionDto> getAll(Pageable pageable) {
-        return PageToDto(repository.findAll(pageable));
+        return PageUtil.pageToDto(repository.findAll(pageable), CollectionMapper::toDto);
+    }
+    public List<CollectionDto> getByIds(List<String> ids){
+        return repository.findAllById(ids).stream().map(CollectionMapper::toDto).toList();
     }
 
-    private Page<CollectionDto> PageToDto(Page<Collection> collections) {
-        List<String> userIds = collections.stream().map(Collection::getUserId).toList();
 
-        List<UserDto> userDtoList = userService.getByIds(userIds);
-
-        return PageUtil.pageToDto(collections, (collection -> {
-            UserDto userDto = userDtoList.stream().filter(user -> user.getId().equals(collection.getUserId())).findFirst().orElseThrow();
-            return CollectionMapper.toDto(collection, userDto);
-        }));
-    }
 }

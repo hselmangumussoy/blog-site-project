@@ -16,4 +16,5 @@ public class UserRequest {
     private String password;
     private String phoneNumber;
     private UserType userType;
+    private String collectionId;
 }

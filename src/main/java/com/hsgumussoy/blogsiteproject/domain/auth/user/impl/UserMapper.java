@@ -1,6 +1,10 @@
 package com.hsgumussoy.blogsiteproject.domain.auth.user.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
+import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 public class UserMapper {
     public static User toEntity(User user, UserDto dto) {
@@ -10,10 +14,11 @@ public class UserMapper {
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setUserType(dto.getUserType());
         user.setActive(dto.getActive());
+        user.setCollectionId(dto.getCollection().getId());
         return user;
     }
 
-    public static UserDto toDto(User user) {
+    public static UserDto toDto(User user, CollectionDto collectionDto) {
         return  UserDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -25,6 +30,30 @@ public class UserMapper {
                 .created(user.getCreated())
                 .modified(user.getModified())
                 .active(user.getActive())
+                .collection(collectionDto)
+                .build();
+    }
+
+    public static UserDto toDto(User user, List<CollectionDto> collectionDtoList){
+        CollectionDto collection = StringUtils.hasLength(user.getCollectionId()) ?
+                collectionDtoList.stream()
+                        .filter(c -> c.getId().equals(user.getCollectionId()))
+                        .findFirst()
+                        .orElseThrow()
+                :null;
+
+        return UserDto.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .userName(user.getUserName())
+                .password(user.getPassword())
+                .phoneNumber(user.getPhoneNumber())
+                .userType(user.getUserType())
+                .active(user.getActive())
+                .created(user.getCreated())
+                .modified(user.getModified())
+                .active(user.getActive())
+                .collection(collection)
                 .build();
     }
 }
