@@ -22,7 +22,7 @@ public class GroupMapper {
 
     }
 
-    public static Page<GroupResponse> toPageResponse(Page<GroupDto> roleDtos) {
-        return PageUtil.pageToDto(roleDtos, GroupMapper::toResponse);
+    public static Page<GroupResponse> toPageResponse(Page<GroupDto> groupDtos) {
+        return PageUtil.pageToDto(groupDtos, GroupMapper::toResponse);
     }
 }
