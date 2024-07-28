@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.permissionrole.api;
+package com.hsgumussoy.blogsiteproject.domain.platform.permissiongroup.web;
 
 import com.hsgumussoy.blogsiteproject.domain.platform.permission.api.PermissionDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.group.api.GroupDto;
@@ -8,11 +8,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+
 @RequiredArgsConstructor
 @Getter
 @Setter
 @Builder
-public class PermissionRoleDto {private final String id;
+public class PermissionGroupResponse {
+    private final String id;
     private final Date created;
     private final Date modified;
     private final PermissionDto permission;

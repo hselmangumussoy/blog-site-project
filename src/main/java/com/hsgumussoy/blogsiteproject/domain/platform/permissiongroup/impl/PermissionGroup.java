@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.permissionrole.impl;
+package com.hsgumussoy.blogsiteproject.domain.platform.permissiongroup.impl;
 
 import com.hsgumussoy.blogsiteproject.library.rest.AbstractEntity;
 import jakarta.persistence.Entity;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PermissionRole extends AbstractEntity {
+public class PermissionGroup extends AbstractEntity {
     /*İzin ile rol arasındaki ilişkiyi tanımlar.
     * Bir rol, bir veya daha fazla izne sahip olabilir
     * ve bir izin birden fazla rolde bulunabilir.*/
