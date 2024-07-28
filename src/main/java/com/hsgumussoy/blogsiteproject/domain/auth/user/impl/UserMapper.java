@@ -14,7 +14,6 @@ public class UserMapper {
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setUserType(dto.getUserType());
         user.setActive(dto.getActive());
-        user.setCollectionId(dto.getCollection().getId());
         return user;
     }
 

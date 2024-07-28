@@ -19,7 +19,6 @@ public class UserMapper {
                 .email(request.getEmail())
                 .userName(request.getUserName())
                 .userType(request.getUserType())
-                .collection(CollectionDto.builder().id(request.getCollectionId()).build())
                 .build();
 
     }
@@ -35,7 +34,6 @@ public class UserMapper {
                 .password(dto.getPassword())
                 .userType(dto.getUserType())
                 .active(dto.getActive())
-                .collection(dto.getCollection())
                 .build();
     }
 
