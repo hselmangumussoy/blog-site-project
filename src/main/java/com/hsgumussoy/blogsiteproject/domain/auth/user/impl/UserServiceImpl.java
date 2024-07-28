@@ -18,32 +18,18 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
     private  final UserRepository repository;
-    private final CollectionServiceImpl collectionService;
     @Override
     public UserDto save(UserDto dto) {
-        CollectionDto collectionDto = collectionService.getById(dto.getCollection().getId());
-        return UserMapper.toDto(repository.save(UserMapper.toEntity(new User(), dto)), collectionDto);
+        return UserMapper.toDto(repository.save(UserMapper.toEntity(new User(), dto)));
     }
     @Override
     public UserDto getById(String id) {
-        User user = repository.findById(id).orElseThrow();
-        CollectionDto collectionDto = collectionService.getById(user.getCollectionId());
-
-        return UserMapper.toDto(repository.findById(id).get(), collectionDto);
+        return UserMapper.toDto(repository.findById(id).get());
     }
 
     @Override
     public Page<UserDto> getAll(Pageable pageable) {
-        return PageToDto(repository.findAll(pageable));
-    }
-    private Page<UserDto> PageToDto (Page<User> users){
-        List<String> collectionIds = users.stream().map(User:: getCollectionId).toList();
-        List<CollectionDto> collectionDtoList = collectionService.getByIds(collectionIds);
-
-        return PageUtil.pageToDto(users, (user -> {
-            CollectionDto collectionDto = collectionDtoList.stream().filter(collection -> collection.getId().equals(user.getCollectionId())).findFirst().orElseThrow();
-            return UserMapper.toDto(user,collectionDto);
-        }));
+        return PageUtil.pageToDto(repository.findAll(pageable), UserMapper::toDto);
     }
 
     @Override
@@ -58,9 +44,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getByIds(List<String> ids) {
-        List<User> users = repository.findAllById(ids);
-        List<CollectionDto>collectionDtoList = collectionService.getByIds(users.stream().map(User::getCollectionId).collect(Collectors.toList()));
-
-        return repository.findAllById(ids).stream().map(user -> UserMapper.toDto(user, collectionDtoList)).toList();
+        return repository.findAllById(ids).stream().map(UserMapper::toDto).toList();
     }
 }

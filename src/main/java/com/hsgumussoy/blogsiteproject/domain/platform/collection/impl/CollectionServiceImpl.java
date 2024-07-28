@@ -1,6 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.collection.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
+import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.User;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserMapper;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserServiceImpl;
 import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
@@ -12,20 +13,26 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CollectionServiceImpl implements CollectionService {
     private final CollectionRepository repository;
+    private final UserServiceImpl userService;
 
     @Override
     public CollectionDto save(CollectionDto dto) {
-        return CollectionMapper.toDto(repository.save(CollectionMapper.toEntity(new Collection(), dto)));
+        UserDto userDto = userService.getById(dto.getUser().getId());
+        return CollectionMapper.toDto(repository.save(CollectionMapper.toEntity(new Collection(), dto)), userDto);
     }
 
     @Override
     public CollectionDto getById(String id) {
-        return CollectionMapper.toDto(repository.findById(id).get());
+        Collection collection = repository.findById(id).orElseThrow();
+        UserDto userDto = userService.getById(collection.getUserId());
+
+        return CollectionMapper.toDto(repository.findById(id).get(), userDto);
     }
 
     @Override
@@ -40,10 +47,30 @@ public class CollectionServiceImpl implements CollectionService {
 
     @Override
     public Page<CollectionDto> getAll(Pageable pageable) {
-        return PageUtil.pageToDto(repository.findAll(pageable), CollectionMapper::toDto);
+        return PageToDto(repository.findAll(pageable));
     }
+
+    private Page<CollectionDto> PageToDto(Page<Collection> collections) {
+        List<String> userIds = collections.stream().map(Collection::getUserId).collect(Collectors.toList());
+
+        List<UserDto> userDtoList = userService.getByIds(userIds);
+
+        return PageUtil.pageToDto(collections,
+                    (collection -> {
+                        UserDto userDto = userDtoList.stream()
+                                .filter(user-> user.getId().equals(collection.getUserId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                        return CollectionMapper.toDto(collection, userDto);
+                    }));
+    }
+
     public List<CollectionDto> getByIds(List<String> ids){
-        return repository.findAllById(ids).stream().map(CollectionMapper::toDto).toList();
+        List<Collection> collections = repository.findAllById(ids);
+        List<UserDto> userDtoList = userService.getByIds(collections.stream().map(Collection::getUserId).collect(Collectors.toList()));
+
+        return repository.findAllById(ids).stream().map(collection-> CollectionMapper.toDto(collection, userDtoList)).toList();
     }
 
 

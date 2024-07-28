@@ -18,7 +18,7 @@ public class UserMapper {
         return user;
     }
 
-    public static UserDto toDto(User user, CollectionDto collectionDto) {
+    public static UserDto toDto(User user) {
         return  UserDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -30,30 +30,6 @@ public class UserMapper {
                 .created(user.getCreated())
                 .modified(user.getModified())
                 .active(user.getActive())
-                .collection(collectionDto)
-                .build();
-    }
-
-    public static UserDto toDto(User user, List<CollectionDto> collectionDtoList){
-        CollectionDto collection = StringUtils.hasLength(user.getCollectionId()) ?
-                collectionDtoList.stream()
-                        .filter(c -> c.getId().equals(user.getCollectionId()))
-                        .findFirst()
-                        .orElseThrow()
-                :null;
-
-        return UserDto.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .userName(user.getUserName())
-                .password(user.getPassword())
-                .phoneNumber(user.getPhoneNumber())
-                .userType(user.getUserType())
-                .active(user.getActive())
-                .created(user.getCreated())
-                .modified(user.getModified())
-                .active(user.getActive())
-                .collection(collection)
                 .build();
     }
 }
