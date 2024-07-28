@@ -6,6 +6,7 @@ import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryService;
+import com.hsgumussoy.blogsiteproject.domain.platform.category.impl.Category;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -56,8 +58,12 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleDto> getByIds(List<String> articleIds) {
-        return null;
+    public List<ArticleDto> getByIds(List<String> ids) {
+        List<Article> articles = repository.findAllById(ids);
+        List<CategoryDto> categoryDtoList = categoryService.getByIds(articles.stream().map(Article::getCategoryId).collect(Collectors.toList()));
+        List<UserDto> userDtoList = userService.getByIds(articles.stream().map(Article::getUserId).collect(Collectors.toList()));
+
+        return repository.findAllById(ids).stream().map(article ->ArticleMapper.toDto(article, userDtoList,categoryDtoList)).toList();
     }
 
     public Page<ArticleDto> PageToDto(Page<Article> articles){
