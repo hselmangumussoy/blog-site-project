@@ -5,19 +5,19 @@ import com.hsgumussoy.blogsiteproject.domain.auth.usergroup.api.UserGroupDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.group.api.GroupDto;
 
 public class UserGroupMapper {
-    public static UserGroup toEntity(UserGroup userRole, UserGroupDto dto) {
-        userRole.setRoleId(dto.getUser().getId());
-        userRole.setUserId(dto.getRole().getId());
-        return userRole;
+    public static UserGroup toEntity(UserGroup userGroup, UserGroupDto dto) {
+        userGroup.setGroupId(dto.getGroup().getId());
+        userGroup.setUserId(dto.getUser().getId());
+        return userGroup;
     }
 
-    public static UserGroupDto toDto(UserGroup userRole, UserDto userDto, GroupDto roleDto) {
+    public static UserGroupDto toDto(UserGroup userGroup, UserDto userDto, GroupDto groupDto) {
         return UserGroupDto.builder()
-                .role(roleDto)
+                .group(groupDto)
                 .user(userDto)
-                .id(userRole.getRoleId())
-                .created(userRole.getCreated())
-                .modified(userRole.getModified())
+                .id(userGroup.getGroupId())
+                .created(userGroup.getCreated())
+                .modified(userGroup.getModified())
                 .build();
     }
 }

@@ -24,17 +24,17 @@ public class UserGroupServiceImpl implements UserGroupService {
     @Override
     public UserGroupDto save(UserGroupDto dto) {
         UserDto userDto = userService.getById(dto.getUser().getId());
-        GroupDto roleDto = roleService.getById(dto.getRole().getId());
+        GroupDto roleDto = roleService.getById(dto.getGroup().getId());
         return UserGroupMapper.toDto(repository.save(UserGroupMapper.toEntity(new UserGroup(), dto)), userDto, roleDto);
     }
 
     @Override
     public UserGroupDto getById(String id) {
-        UserGroup userRole = repository.findById(id).orElseThrow();
-        UserDto userDto = userService.getById(userRole.getRoleId());
-        GroupDto roleDto = roleService.getById(userRole.getRoleId());
+        UserGroup userGroup = repository.findById(id).orElseThrow();
+        UserDto userDto = userService.getById(userGroup.getUserId());
+        GroupDto groupDto = roleService.getById(userGroup.getGroupId());
 
-        return UserGroupMapper.toDto(userRole, userDto, roleDto);
+        return UserGroupMapper.toDto(userGroup, userDto, groupDto);
     }
 
     @Override
@@ -52,17 +52,17 @@ public class UserGroupServiceImpl implements UserGroupService {
         return PageToDto(repository.findAll(pageable));
     }
 
-    private Page<UserGroupDto> PageToDto(Page<UserGroup> userRoles) {
-        List<String> userIds = userRoles.stream().map(UserGroup::getUserId).toList();
-        List<String> roleIds = userRoles.stream().map(UserGroup::getRoleId).toList();
+    private Page<UserGroupDto> PageToDto(Page<UserGroup> userGroups) {
+        List<String> userIds = userGroups.stream().map(UserGroup::getUserId).toList();
+        List<String> groupIds = userGroups.stream().map(UserGroup::getGroupId).toList();
 
         List<UserDto> userDtoList = userService.getByIds(userIds);
-        List<GroupDto> roleDtoList = roleService.getByIds(roleIds);
+        List<GroupDto> groupDtoList = roleService.getByIds(groupIds);
 
-        return PageUtil.pageToDto(userRoles, (userRole -> {
+        return PageUtil.pageToDto(userGroups, (userRole -> {
             UserDto userDto = userDtoList.stream().filter(user -> user.getId().equals(userRole.getUserId())).findFirst().orElseThrow();
-            GroupDto roleDto = roleDtoList.stream().filter(role -> role.getId().equals(userRole.getRoleId())).findFirst().orElseThrow();
-            return UserGroupMapper.toDto(userRole, userDto, roleDto);
+            GroupDto groupDto = groupDtoList.stream().filter(role -> role.getId().equals(userRole.getGroupId())).findFirst().orElseThrow();
+            return UserGroupMapper.toDto(userRole, userDto, groupDto);
         }));
     }
 }

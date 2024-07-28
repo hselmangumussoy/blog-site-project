@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserGroup extends AbstractEntity {
     private String userId;
-    private String roleId;
+    private String groupId;
     private Boolean status;
 }
 

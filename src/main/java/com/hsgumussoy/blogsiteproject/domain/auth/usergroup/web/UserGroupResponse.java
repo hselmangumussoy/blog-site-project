@@ -15,7 +15,7 @@ import java.util.Date;
 @Builder
 public class UserGroupResponse {
     private final UserDto user;
-    private final GroupDto role;
+    private final GroupDto group;
     private final Date created;
     private final Date modified;
     private final String id;

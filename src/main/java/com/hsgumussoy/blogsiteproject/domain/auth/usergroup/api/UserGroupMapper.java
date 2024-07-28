@@ -11,14 +11,14 @@ public class UserGroupMapper {
     public static UserGroupDto toDto(UserGroupRequest request) {
         return UserGroupDto.builder()
                 .user(UserDto.builder().id(request.getUserId()).build())
-                .role(GroupDto.builder().id(request.getRoleId()).build())
+                .group(GroupDto.builder().id(request.getGroupId()).build())
                 .build();
     }
 
     public static UserGroupResponse toResponse(UserGroupDto dto) {
         return UserGroupResponse.builder()
                 .user(dto.getUser())
-                .role(dto.getRole())
+                .group(dto.getGroup())
                 .created(dto.getCreated())
                 .id(dto.getId())
                 .modified(dto.getModified())

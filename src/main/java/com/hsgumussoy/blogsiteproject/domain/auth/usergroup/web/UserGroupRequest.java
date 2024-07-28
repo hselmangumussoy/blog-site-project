@@ -9,5 +9,5 @@ import lombok.*;
 @Builder
 public class UserGroupRequest {
     private String userId;
-    private String roleId;
+    private String groupId;
 }
