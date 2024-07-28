@@ -1,4 +1,4 @@
-package com.hsgumussoy.blogsiteproject.domain.platform.articlecollection.impl;
+package com.hsgumussoy.blogsiteproject.domain.platform.collection.impl.articlecollection;
 
 import com.hsgumussoy.blogsiteproject.library.rest.AbstractEntity;
 import jakarta.persistence.Entity;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ArticleCollection extends AbstractEntity {
-    private  Long collection;
-    private Long articleId;
+    private  String collectionId;
+    private String articleId;
 }
