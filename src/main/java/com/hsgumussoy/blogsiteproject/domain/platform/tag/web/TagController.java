@@ -20,7 +20,7 @@ public class TagController extends BaseController {
     private Response<TagResponse> save(@RequestBody TagRequest request){
         return respond(TagMapper.toResponse(service.save(TagMapper.toDto(request))));
     }
-    @GetMapping
+    @GetMapping("/{id}")
     private Response<TagResponse> get(@PathVariable String id ){
         return respond(TagMapper.toResponse(service.getById(id)));
     }
@@ -28,11 +28,11 @@ public class TagController extends BaseController {
     private Response<PageResponse<TagResponse>> getAll(Pageable pageable){
         return respond(TagMapper.toPageResponse(service.getAll((pageable))));
     }
-    @PutMapping
+    @PutMapping("/{id}")
     private Response<TagResponse> update(@RequestBody TagRequest request,@PathVariable String id ){
         return respond(TagMapper.toResponse(service.update(TagMapper.toDto(request),id)));
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());

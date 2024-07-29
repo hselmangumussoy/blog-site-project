@@ -12,7 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
+
 
 @RequiredArgsConstructor
 @Service
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public UserDto getById(String id) {
-        return UserMapper.toDto(repository.findById(id).get());
+        return UserMapper.toDto(repository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found with id: " + id)));
     }
 
     @Override

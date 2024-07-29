@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class ArticleTag extends AbstractEntity {
-    private Long articleId;
-    private Long tagId;
+    private String articleId;
+    private String tagId;
 }

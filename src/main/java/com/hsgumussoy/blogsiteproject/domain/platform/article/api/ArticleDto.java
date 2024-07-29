@@ -5,6 +5,7 @@ import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,4 +21,6 @@ public class ArticleDto {
 
     private final UserDto user;
     private final CategoryDto category;
+
+    private final List<String> tagId;
 }

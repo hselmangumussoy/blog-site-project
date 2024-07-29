@@ -2,7 +2,9 @@ package com.hsgumussoy.blogsiteproject.domain.platform.article.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
+import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTag;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
+import com.hsgumussoy.blogsiteproject.domain.platform.tag.api.TagDto;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
@@ -57,5 +59,11 @@ public class ArticleMapper {
         article.setContent(dto.getContent());
         article.setLikeCount(dto.getLikeCount());
         return article;
+    }
+    public static ArticleTag toEntityTag(Article article, TagDto tagDto){
+        ArticleTag articleTag = new ArticleTag();
+        articleTag.setTagId(tagDto.getId());
+        articleTag.setArticleId(article.getId());
+        return articleTag;
     }
 }

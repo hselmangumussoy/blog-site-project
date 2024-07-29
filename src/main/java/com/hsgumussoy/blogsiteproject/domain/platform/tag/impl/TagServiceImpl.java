@@ -8,6 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class TagServiceImpl implements TagService {
@@ -35,5 +38,12 @@ public class TagServiceImpl implements TagService {
     @Override
     public TagDto update(TagDto dto, String id) {
         return null;
+    }
+
+    @Override
+    public List<TagDto> getByIds(List<String> ids) {
+        return repository.findAllById(ids).stream()
+                .map(TagMapper::toDto)
+                .collect(Collectors.toList());
     }
 }
