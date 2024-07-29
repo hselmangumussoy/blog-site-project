@@ -24,7 +24,7 @@ public class CommentMapper {
     public static CommentDto toDto(CommentRequest request) {
         return CommentDto.builder()
                 .article(ArticleDto.builder().id(request.getArticleId()).build())
-                .user(UserDto.builder().id(request.getArticleId()).build())
+                .user(UserDto.builder().id(request.getUserId()).build())
                 .content(request.getContent())
                 .build();
     }

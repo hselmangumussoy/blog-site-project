@@ -1,7 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.follow.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
-import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserService;
+import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserServiceImpl;
 import com.hsgumussoy.blogsiteproject.domain.platform.follow.api.FollowDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.follow.api.FollowService;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class FollowServiceImpl implements FollowService {
     private final FollowRepository repository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Override
     public void delete(String id) {

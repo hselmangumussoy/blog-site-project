@@ -1,9 +1,5 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.comment.web;
 
-import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryMapper;
-import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryService;
-import com.hsgumussoy.blogsiteproject.domain.platform.category.web.CategoryRequest;
-import com.hsgumussoy.blogsiteproject.domain.platform.category.web.CategoryResponse;
 import com.hsgumussoy.blogsiteproject.domain.platform.comment.api.CommentMapper;
 import com.hsgumussoy.blogsiteproject.domain.platform.comment.api.CommentService;
 import com.hsgumussoy.blogsiteproject.library.rest.BaseController;

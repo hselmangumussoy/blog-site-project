@@ -20,7 +20,7 @@ public class PermissionController extends BaseController {
     private Response<PermissionResponse> save(@RequestBody PermissionRequest request){
         return respond(PermissionMapper.toResponse(service.save(PermissionMapper.toDto(request))));
     }
-    @GetMapping
+    @GetMapping("/{id}")
     private Response<PermissionResponse> get(@PathVariable String id ){
         return respond(PermissionMapper.toResponse(service.getById(id)));
     }
@@ -28,11 +28,11 @@ public class PermissionController extends BaseController {
     private Response<PageResponse<PermissionResponse>> getAll(Pageable pageable){
         return respond(PermissionMapper.toPageResponse(service.getAll((pageable))));
     }
-    @PutMapping
+    @PutMapping("/{id}")
     private Response<PermissionResponse> update(@RequestBody PermissionRequest request,@PathVariable String id ){
         return respond(PermissionMapper.toResponse(service.update(PermissionMapper.toDto(request),id)));
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     private Response<Void> delete(@PathVariable String id){
         service.delete(id);
         return new Response<>(MetaResponse.success());

@@ -1,9 +1,9 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.comment.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
-import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserService;
+import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserServiceImpl;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService;
+import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.ArticleServiceImpl;
 import com.hsgumussoy.blogsiteproject.domain.platform.comment.api.CommentDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.comment.api.CommentService;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
@@ -18,8 +18,8 @@ import java.util.List;
 @Service
 public class CommentServiceImpl implements CommentService {
     private final CommentRepository repository;
-    private final UserService userService;
-    private final ArticleService articleService;
+    private final UserServiceImpl userService;
+    private final ArticleServiceImpl articleService;
 
     @Override
     public void delete(String id) {
@@ -34,7 +34,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public CommentDto getById(String id) {
         Comment comment = repository.findById(id).orElseThrow();
-        UserDto userDto = userService.getById(comment.getArticleId());
+        UserDto userDto = userService.getById(comment.getUserId());
         ArticleDto articleDto = articleService.getById(comment.getArticleId());
 
         return CommentMapper.toDto(comment, userDto, articleDto);

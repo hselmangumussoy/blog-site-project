@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("roles")
+@RequestMapping("groups")
 @RequiredArgsConstructor
 public class GroupController extends BaseController {
     private final GroupService service;
