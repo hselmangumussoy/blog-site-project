@@ -20,5 +20,4 @@ public class ResponseBuilder {
     public static Response<MetaResponse> build(MetaResponse metaResponse){
         return new Response<>(metaResponse);
     }
-
 }
