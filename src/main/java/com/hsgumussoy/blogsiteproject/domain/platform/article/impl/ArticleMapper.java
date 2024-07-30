@@ -60,10 +60,11 @@ public class ArticleMapper {
         article.setLikeCount(dto.getLikeCount());
         return article;
     }
-    public static ArticleTag toEntityTag(Article article, TagDto tagDto){
+    public static ArticleTag toEntityTag(Article article, TagDto tagDto) {
         ArticleTag articleTag = new ArticleTag();
-        articleTag.setTagId(tagDto.getId());
         articleTag.setArticleId(article.getId());
+        articleTag.setTagId(tagDto.getId());
         return articleTag;
     }
+
 }
