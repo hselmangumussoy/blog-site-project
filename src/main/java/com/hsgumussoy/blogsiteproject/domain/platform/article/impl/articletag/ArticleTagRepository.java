@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface ArticleTagRepository extends JpaRepository<ArticleTag,String> {
     List<ArticleTag> findByArticleId(String articleId);
-
-    List< ArticleTag> findByTagIdIn(List<String> tagIds);
+    List<ArticleTag> findByTagIdIn(List<String> tagIds);
 }
