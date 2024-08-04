@@ -4,32 +4,52 @@ import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserService;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService;
+import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTag;
+import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTagRepository;
+import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTagServiceImpl;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryService;
-import com.hsgumussoy.blogsiteproject.domain.platform.category.impl.Category;
+import com.hsgumussoy.blogsiteproject.domain.platform.tag.api.TagDto;
+import com.hsgumussoy.blogsiteproject.domain.platform.tag.impl.Tag;
+import com.hsgumussoy.blogsiteproject.domain.platform.tag.impl.TagServiceImpl;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository repository;
+    private final ArticleTagRepository articleTagRepository;
     private final UserService userService;
     private final CategoryService categoryService;
-    @Override
-    public ArticleDto save(ArticleDto dto) {
-        UserDto userDto = userService.getById(dto.getUser().getId());
-        CategoryDto categoryDto = categoryService.getById(dto.getCategory().getId());
+    private final TagServiceImpl tagService;
+    private final ArticleTagServiceImpl articleTagService;
+    public final int ARTICLE_STATUS_NONE = 0;
+    public final int ARTICLE_STATUS_DRAFT= 1;
 
-        return ArticleMapper.toDto(repository.save(ArticleMapper.toEntity(new Article(), dto)), userDto,categoryDto);
+
+    @Override
+    @Transactional
+    public ArticleDto save(ArticleDto dto) {
+     return null;
     }
+
+    private ArticleDto articleIsAbsent(ArticleDto dto) {
+        return null;
+    }
+
+    private ArticleDto articleIsExist(Optional<Article> article, ArticleDto articleDto, TagDto tagDto) {
+        return null;
+    }
+
 
     @Override
     public ArticleDto getById(String id) {
@@ -42,9 +62,10 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void delete(String id) {
-        /*var  article = repository.findById(id).orElseThrow();
-        repository.delete(article);*/
-        repository.deleteById(id);
+        var article = repository.findById(id).orElseThrow();
+        List<ArticleTag> articleTags = articleTagRepository.findByArticleId(id);
+        articleTagRepository.deleteAll(articleTags);
+        repository.delete(article);
     }
 
     @Override

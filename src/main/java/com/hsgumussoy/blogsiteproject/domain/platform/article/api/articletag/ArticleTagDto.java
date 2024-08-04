@@ -18,5 +18,4 @@ public class ArticleTagDto {
     private final Date created;
     private final Date modified;
     private final TagDto tag;
-    //private final ArticleDto articleDto;
 }

@@ -3,6 +3,7 @@ package com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.articletag.ArticleTagDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.articletag.ArticleTagService;
 import com.hsgumussoy.blogsiteproject.domain.platform.tag.api.TagService;
+import com.hsgumussoy.blogsiteproject.domain.platform.tag.impl.TagServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ArticleTagServiceImpl implements ArticleTagService {
     private final ArticleTagRepository repository;
-    private final TagService tagService;
+    private final TagServiceImpl tagService;
 
 
     @Override
