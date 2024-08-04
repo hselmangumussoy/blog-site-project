@@ -30,7 +30,6 @@ public class ArticleMapper {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .user(UserDto.builder().id(request.getUserId()).build())
-                .tagId(request.getTagId())
                 .build();
     }
 

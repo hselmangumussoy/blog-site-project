@@ -16,5 +16,4 @@ public class ArticleRequest {
     private String userId;
     private String categoryId;
 
-    private List<String> tagId;
 }

@@ -2,6 +2,7 @@ package com.hsgumussoy.blogsiteproject.domain.platform.article.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
+import com.hsgumussoy.blogsiteproject.domain.platform.article.api.articletag.ArticleTagDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTag;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.tag.api.TagDto;
@@ -11,6 +12,17 @@ import java.util.List;
 
 public class ArticleMapper {
     public ArticleMapper() {
+    }
+    public static ArticleDto toDto(Article article, UserDto userDto, CategoryDto categoryDto, List<ArticleTagDto> articleTagDtos) {
+        return ArticleDto.builder()
+                .id(article.getId())
+                .user(userDto)
+                .category(categoryDto)
+                .status(article.getStatus())
+                .likeCount(article.getLikeCount())
+                .title(article.getTitle())
+                .content(article.getContent())
+                .build();
     }
 
     public static ArticleDto toDto(Article article, UserDto userDto, CategoryDto categoryDto) {
