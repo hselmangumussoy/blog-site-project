@@ -1,6 +1,6 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.collection.impl.articlecollection;
 
-import com.hsgumussoy.blogsiteproject.library.rest.AbstractEntity;
+import com.hsgumussoy.blogsiteproject.library.rest.AbstractEntityForIndexing;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-public class ArticleCollection extends AbstractEntity {
-    private  String collectionId;
+public class ArticleCollection extends AbstractEntityForIndexing {
+    private String collectionId;
     private String articleId;
 }

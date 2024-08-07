@@ -1,28 +1,16 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
+import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.User;
+import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserMapper;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.api.articletag.ArticleTagDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTag;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.tag.api.TagDto;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
 public class ArticleMapper {
     public ArticleMapper() {
-    }
-    public static ArticleDto toDto(Article article, UserDto userDto, CategoryDto categoryDto, List<ArticleTagDto> articleTagDtos) {
-        return ArticleDto.builder()
-                .id(article.getId())
-                .user(userDto)
-                .category(categoryDto)
-                .status(article.getStatus())
-                .likeCount(article.getLikeCount())
-                .title(article.getTitle())
-                .content(article.getContent())
-                .build();
     }
 
     public static ArticleDto toDto(Article article, UserDto userDto, CategoryDto categoryDto) {
@@ -45,6 +33,7 @@ public class ArticleMapper {
                         .findFirst()
                         .orElseThrow()
                 : null;
+
         CategoryDto category =  StringUtils.hasLength(article.getCategoryId()) ?
                 categoryDtoList.stream()
                         .filter(c-> c.getId().equals(article.getCategoryId()))
@@ -63,7 +52,6 @@ public class ArticleMapper {
                 .user(user)
                 .build();
     }
-
     public static Article toEntity(Article article, ArticleDto dto) {
         article.setCategoryId(dto.getCategory().getId());
         article.setUserId(dto.getUser().getId());
@@ -72,11 +60,4 @@ public class ArticleMapper {
         article.setLikeCount(dto.getLikeCount());
         return article;
     }
-    public static ArticleTag toEntityTag(Article article, TagDto tagDto) {
-        ArticleTag articleTag = new ArticleTag();
-        articleTag.setArticleId(article.getId());
-        articleTag.setTagId(tagDto.getId());
-        return articleTag;
-    }
-
 }

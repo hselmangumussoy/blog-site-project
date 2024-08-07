@@ -4,14 +4,8 @@ import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserService;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTag;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTagRepository;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articletag.ArticleTagServiceImpl;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryService;
-import com.hsgumussoy.blogsiteproject.domain.platform.tag.api.TagDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.tag.impl.Tag;
-import com.hsgumussoy.blogsiteproject.domain.platform.tag.impl.TagServiceImpl;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,11 +21,9 @@ import java.util.stream.Collectors;
 @Service
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository repository;
-    private final ArticleTagRepository articleTagRepository;
     private final UserService userService;
     private final CategoryService categoryService;
-    private final TagServiceImpl tagService;
-    private final ArticleTagServiceImpl articleTagService;
+
     public final int ARTICLE_STATUS_NONE = 0;
     public final int ARTICLE_STATUS_DRAFT= 1;
 
@@ -46,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService {
         return null;
     }
 
-    private ArticleDto articleIsExist(Optional<Article> article, ArticleDto articleDto, TagDto tagDto) {
+    private ArticleDto articleIsExist(Optional<Article> article, ArticleDto articleDto) {
         return null;
     }
 
@@ -63,8 +55,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void delete(String id) {
         var article = repository.findById(id).orElseThrow();
-        List<ArticleTag> articleTags = articleTagRepository.findByArticleId(id);
-        articleTagRepository.deleteAll(articleTags);
+
         repository.delete(article);
     }
 

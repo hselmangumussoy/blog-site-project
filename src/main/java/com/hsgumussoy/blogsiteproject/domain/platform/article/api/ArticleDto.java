@@ -1,9 +1,7 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.api;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.api.articletag.ArticleTagDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.tag.api.TagDto;
 import lombok.*;
 
 import java.util.Date;
@@ -25,5 +23,5 @@ public class ArticleDto {
     private final UserDto user;
     private final CategoryDto category;
 
-    private final String tagId;
+    private final List<String> categoryId;
 }
