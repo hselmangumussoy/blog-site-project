@@ -36,4 +36,10 @@ public class CollectionController extends BaseController {
     private Response<CollectionResponse> update(@PathVariable String id , @RequestBody CollectionRequest request){
         return respond(CollectionMapper.toResponse(service.update(id , CollectionMapper.toDto(request))));
     }
+
+    @PostMapping
+    private Response<CollectionResponse> addArticle(@RequestBody AddArticleToCollectionRequest request){
+        service.addArticle(CollectionMapper.toDto(request));
+        return new Response<>(MetaResponse.success());
+    }
 }

@@ -13,4 +13,6 @@ public interface CollectionService {
     CollectionDto update(String id, CollectionDto dto);
 
     Page<CollectionDto> getAll(Pageable pageable);
+
+    void addArticle(CollectionDto dto);
 }
