@@ -3,7 +3,6 @@ package com.hsgumussoy.blogsiteproject.domain.platform.article.api;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleResponse;
-import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import org.springframework.data.domain.Page;
 
@@ -26,7 +25,7 @@ public class ArticleMapper {
 
     public static ArticleDto toDto(ArticleRequest request) {
         return ArticleDto.builder()
-                .category(CategoryDto.builder().id(request.getCategoryId()).build())
+                //caategory eklenecek
                 .title(request.getTitle())
                 .content(request.getContent())
                 .user(UserDto.builder().id(request.getUserId()).build())
