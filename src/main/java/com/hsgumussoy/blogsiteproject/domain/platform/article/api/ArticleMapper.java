@@ -1,6 +1,5 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.api;
 
-import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleResponse;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
@@ -18,17 +17,15 @@ public class ArticleMapper {
                 .created(dto.getCreated())
                 .id(dto.getId())
                 .likeCount(dto.getLikeCount())
-                .category(dto.getCategory())
-                .user(dto.getUser())
                 .build();
     }
 
     public static ArticleDto toDto(ArticleRequest request) {
         return ArticleDto.builder()
-                //caategory eklenecek
                 .title(request.getTitle())
                 .content(request.getContent())
-                .user(UserDto.builder().id(request.getUserId()).build())
+                .userId(request.getUserId())
+                .categoryId(request.getCategoryId())
                 .build();
     }
 

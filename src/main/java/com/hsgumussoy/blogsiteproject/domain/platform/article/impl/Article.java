@@ -17,8 +17,4 @@ public class Article extends AbstractEntity {
     private String content;
     private int likeCount;
     private int status;
-
-    private String userId;
-    private String categoryId;
-
 }
