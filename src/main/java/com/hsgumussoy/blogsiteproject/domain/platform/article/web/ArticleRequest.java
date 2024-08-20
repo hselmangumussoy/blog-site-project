@@ -13,7 +13,6 @@ public class ArticleRequest {
     private String title;
     private String content;
 
-    private String userId;
+    private List<String> userId;
     private List<String> categoryId;
-
 }
