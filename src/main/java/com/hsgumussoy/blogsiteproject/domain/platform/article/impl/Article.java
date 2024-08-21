@@ -1,5 +1,6 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.impl;
 
+import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.User;
 import com.hsgumussoy.blogsiteproject.library.rest.AbstractEntity;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -17,4 +18,5 @@ public class Article extends AbstractEntity {
     private String content;
     private int likeCount;
     private int status;
+    private String userId;
 }

@@ -1,5 +1,6 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.api;
 
+import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import lombok.*;
 
 import java.util.Date;
@@ -17,7 +18,7 @@ public class ArticleDto {
     private final Date modified;
     private final int likeCount;
     private final int status;
+    private final UserDto user;
 
-    private final List<String> userId;
     private final List<String> categoryId;
 }

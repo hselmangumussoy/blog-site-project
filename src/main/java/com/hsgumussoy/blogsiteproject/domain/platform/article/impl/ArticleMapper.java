@@ -1,12 +1,13 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.impl;
 
+import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 
 public class ArticleMapper {
     public ArticleMapper() {
     }
 
-    public static ArticleDto toDto(Article article) {
+    public static ArticleDto toDto(Article article, UserDto user) {
         return ArticleDto.builder()
                 .title(article.getTitle())
                 .content(article.getContent())
@@ -14,6 +15,7 @@ public class ArticleMapper {
                 .modified(article.getModified())
                 .created(article.getCreated())
                 .likeCount(article.getLikeCount())
+                .user(user)
                 .build();
     }
 
@@ -47,6 +49,8 @@ public class ArticleMapper {
         article.setTitle(dto.getTitle());
         article.setContent(dto.getContent());
         article.setLikeCount(dto.getLikeCount());
+        article.setUserId(dto.getUser().getId());
+        article.setStatus((dto.getStatus()));
         return article;
     }
 }

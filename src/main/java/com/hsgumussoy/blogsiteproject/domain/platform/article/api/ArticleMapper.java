@@ -1,5 +1,6 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.api;
 
+import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleResponse;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
@@ -24,7 +25,7 @@ public class ArticleMapper {
         return ArticleDto.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .userId(request.getUserId())
+                .user(UserDto.builder().id(request.getUserId()).build())
                 .categoryId(request.getCategoryId())
                 .build();
     }
