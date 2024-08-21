@@ -2,9 +2,9 @@ package com.hsgumussoy.blogsiteproject.domain.platform.collection.impl;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserServiceImpl;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articlecategory.ArticleCategoryRepository;
 import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionService;
+import com.hsgumussoy.blogsiteproject.domain.platform.collection.impl.articlecollection.ArticleCollection;
 import com.hsgumussoy.blogsiteproject.domain.platform.collection.impl.articlecollection.ArticleCollectionRepository;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
@@ -53,7 +53,17 @@ public class CollectionServiceImpl implements CollectionService {
 
     @Override
     public void addArticle(CollectionDto dto) {
-        //collection varsa makale ekle , yoksa default olanı koy.
+        Collection collection = repository.findById(dto.getId()).orElseThrow(()-> new RuntimeException("Collection not found!"));
+
+        List<ArticleCollection> articleCollections = dto.getArticleId().stream()
+                .map(articleId->{
+                    ArticleCollection articleCollection = new ArticleCollection();
+                    articleCollection.setArticleId(articleId);
+                    articleCollection.setCollectionId(collection.getId());
+                    return articleCollection;
+                }).collect(Collectors.toList());
+
+        articleCollectionRepository.saveAll(articleCollections);
     }
 
     private Page<CollectionDto> PageToDto(Page<Collection> collections) {

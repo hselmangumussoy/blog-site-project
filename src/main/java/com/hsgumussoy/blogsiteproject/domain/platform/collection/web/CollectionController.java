@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class CollectionController extends BaseController {
     private final CollectionService service;
 
-    @PostMapping
+    @PostMapping("/save")
     private Response<CollectionResponse> save(@RequestBody CollectionRequest request){
         return respond(CollectionMapper.toResponse(service.save(CollectionMapper.toDto(request))));
     }
@@ -37,7 +37,7 @@ public class CollectionController extends BaseController {
         return respond(CollectionMapper.toResponse(service.update(id , CollectionMapper.toDto(request))));
     }
 
-    @PostMapping
+    @PostMapping("/add-article-to-collection")
     private Response<CollectionResponse> addArticle(@RequestBody AddArticleToCollectionRequest request){
         service.addArticle(CollectionMapper.toDto(request));
         return new Response<>(MetaResponse.success());
