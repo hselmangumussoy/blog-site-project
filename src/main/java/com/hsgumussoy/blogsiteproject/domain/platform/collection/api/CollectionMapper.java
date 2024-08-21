@@ -17,7 +17,7 @@ public class CollectionMapper {
     }
     public static CollectionDto toDto(AddArticleToCollectionRequest request) {
         return CollectionDto.builder()
-                .article(ArticleDto.builder().id(request.getArticleId()).build())
+                .articleId(request.getArticleId())
                 .user(UserDto.builder().id(request.getUserId()).build())
                 .id(request.getCollectionId())
                 .build();

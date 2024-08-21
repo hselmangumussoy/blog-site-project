@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
+
 @RequiredArgsConstructor
 @Setter
 @Getter
@@ -19,5 +21,5 @@ public class CollectionDto {
     private final Date modified;
     private final UserDto user;
 
-    private final ArticleDto article;// collection controller için
+    private final List<String> articleId;// collection controller için
 }
