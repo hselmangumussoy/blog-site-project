@@ -1,10 +1,11 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.article.impl;
 
+import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserService;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleService;
+import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articlecategory.ArticleCategory;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articlecategory.ArticleCategoryRepository;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.impl.articleuser.ArticleUserRepository;
 import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryService;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
@@ -21,27 +22,34 @@ import java.util.stream.Collectors;
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository repository;
     private final UserService userService;
-    private final CategoryService categoryService;
     private final ArticleCategoryRepository articleCategoryRepository;
-    private final ArticleUserRepository articleUserRepository;
 
 
     @Override
     @Transactional
     public ArticleDto save(ArticleDto dto) {
-        return saveInitial(dto);
+        UserDto userDto = userService.getById(dto.getUser().getId());
+
+        Article article = ArticleMapper.toEntity(new Article(),dto);
+        repository.save(article);
+
+        List<ArticleCategory> articleCategories = dto.getCategoryId().stream()
+                .map(categoryId -> {
+                    ArticleCategory articleCategory = new ArticleCategory();
+                    articleCategory.setArticleId(article.getId());
+                    articleCategory.setCategoryId(categoryId);
+                    return articleCategory;
+                }).collect(Collectors.toList());
+
+        articleCategoryRepository.saveAll(articleCategories);
+
+        return ArticleMapper.toDto(article,userDto);
     }
-    public ArticleDto saveInitial(ArticleDto dto) {
-        //TODO save metodunun kayıt işlemleri nasıl yapılacağı araştırılıp yapılacak.
-
-        return null;
-    };
-
-
     @Override
     public ArticleDto getById(String id) {
         Article article = repository.findById(id).orElseThrow();
-        return ArticleMapper.toDto(article);
+        UserDto userDto = userService.getById(article.getUserId());
+        return ArticleMapper.toDto(article,userDto);
     }
 
     @Override
@@ -58,11 +66,32 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Page<ArticleDto> getAll(Pageable pageable) {
-        return PageUtil.pageToDto(repository.findAll(pageable), ArticleMapper::toDto);
+        return PageToDto(repository.findAll(pageable));
     }
 
     @Override
     public List<ArticleDto> getByIds(List<String> ids) {
-        return repository.findAllById(ids).stream().map(ArticleMapper::toDto).collect(Collectors.toList());
+        // `findAllById` ile Article nesnelerini getiriyoruz
+        List<Article> articles = repository.findAllById(ids);
+
+        // Her bir Article için userId alınıyor ve ilgili UserDto nesnesi getiriliyor
+        return articles.stream()
+                .map(article -> {
+                    UserDto userDto = userService.getById(article.getUserId());
+                    return ArticleMapper.toDto(article, userDto);
+                })
+                .collect(Collectors.toList());
+    }
+    private Page<ArticleDto> PageToDto(Page<Article> articles) {
+        List<String> userIds = articles.stream().map(Article::getUserId).toList();
+
+        List<UserDto> userDtoList = userService.getByIds(userIds);
+
+        return PageUtil.pageToDto(articles, (article -> {
+            UserDto userDto = userDtoList.stream().filter((user -> user.getId().equals(article.getUserId()))).findFirst().orElseThrow();
+
+            return ArticleMapper.toDto(article ,userDto);
+        }));
+
     }
 }
