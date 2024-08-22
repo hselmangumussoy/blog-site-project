@@ -2,7 +2,6 @@ package com.hsgumussoy.blogsiteproject.domain.auth.user.api;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.web.UserRequest;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.web.UserResponse;
-import com.hsgumussoy.blogsiteproject.domain.platform.collection.api.CollectionDto;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import org.springframework.data.domain.Page;
 
@@ -33,7 +32,6 @@ public class UserMapper {
                 .phoneNumber(dto.getPhoneNumber())
                 .password(dto.getPassword())
                 .userType(dto.getUserType())
-                .active(dto.getActive())
                 .build();
     }
 

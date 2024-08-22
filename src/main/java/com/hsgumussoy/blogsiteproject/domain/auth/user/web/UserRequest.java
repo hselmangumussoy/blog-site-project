@@ -3,8 +3,6 @@ package com.hsgumussoy.blogsiteproject.domain.auth.user.web;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.impl.UserType;
 import lombok.*;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @Builder

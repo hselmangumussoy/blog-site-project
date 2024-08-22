@@ -17,5 +17,5 @@ public class CollectionResponse {
     private final String name;
     private final Date created;
     private final Date modified;
-    private final UserDto user;
+    private final String userId;
 }

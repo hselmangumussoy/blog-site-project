@@ -18,7 +18,6 @@ public class CollectionMapper {
     public static CollectionDto toDto(AddArticleToCollectionRequest request) {
         return CollectionDto.builder()
                 .articleId(request.getArticleId())
-                .user(UserDto.builder().id(request.getUserId()).build())
                 .id(request.getCollectionId())
                 .build();
     }
@@ -27,7 +26,6 @@ public class CollectionMapper {
         return CollectionResponse.builder()
                 .id(dto.getId())
                 .name(dto.getName())
-                .user(dto.getUser())
                 .created(dto.getCreated())
                 .modified(dto.getModified())
                 .build();

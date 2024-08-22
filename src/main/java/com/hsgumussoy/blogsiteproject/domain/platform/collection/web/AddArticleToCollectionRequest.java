@@ -11,6 +11,6 @@ import java.util.List;
 @Builder
 public class AddArticleToCollectionRequest {
     private List<String> articleId;
-    private String userId;
+    //private String userId;
     private String collectionId;
 }

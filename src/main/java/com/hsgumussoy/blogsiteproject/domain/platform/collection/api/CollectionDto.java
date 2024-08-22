@@ -1,7 +1,6 @@
 package com.hsgumussoy.blogsiteproject.domain.platform.collection.api;
 
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
-import com.hsgumussoy.blogsiteproject.domain.platform.article.api.ArticleDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
