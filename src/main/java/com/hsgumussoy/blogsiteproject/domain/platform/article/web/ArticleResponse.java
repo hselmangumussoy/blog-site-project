@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -20,4 +22,5 @@ public class ArticleResponse {
     private final Date modified;
     private final int likeCount;
     private final UserDto user;
+    private final List<CategoryDto> categories;
 }

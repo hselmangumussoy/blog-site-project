@@ -3,8 +3,11 @@ package com.hsgumussoy.blogsiteproject.domain.platform.article.api;
 import com.hsgumussoy.blogsiteproject.domain.auth.user.api.UserDto;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleRequest;
 import com.hsgumussoy.blogsiteproject.domain.platform.article.web.ArticleResponse;
+import com.hsgumussoy.blogsiteproject.domain.platform.category.api.CategoryDto;
 import com.hsgumussoy.blogsiteproject.library.utils.PageUtil;
 import org.springframework.data.domain.Page;
+
+import java.util.Collections;
 
 public class ArticleMapper {
     private ArticleMapper() {
@@ -19,6 +22,9 @@ public class ArticleMapper {
                 .id(dto.getId())
                 .likeCount(dto.getLikeCount())
                 .user(dto.getUser())
+                .categories(dto.getCategories() != null
+                        ? dto.getCategories().stream().toList()
+                        : Collections.emptyList() )
                 .build();
     }
 
@@ -27,7 +33,9 @@ public class ArticleMapper {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .user(UserDto.builder().id(request.getUserId()).build())
-                .categoryId(request.getCategoryId())
+                .categories(request.getCategories() != null
+                        ? request.getCategories().stream().map(s -> CategoryDto.builder().id(s).build()).toList()
+                        : Collections.emptyList())
                 .build();
     }
 

@@ -14,5 +14,5 @@ public class ArticleRequest {
     private String content;
 
     private String userId;
-    private List<String> categoryId;
+    private List<String> categories;
 }
